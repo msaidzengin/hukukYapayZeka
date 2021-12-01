@@ -13,4 +13,3 @@ for id in document_ids:
     file .write(response.text)
     file.close()
     print(request_url)
-    break
