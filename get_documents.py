@@ -2,14 +2,14 @@ import requests
 
 url = "https://karararama.danistay.gov.tr/getDokuman?id="
 
-with open("documents.txt") as file:
+with open("urls.txt") as file:
     lines = file.readlines()
-    document_ids = [line.rstrip() for line in lines]
+    urls = [line.rstrip() for line in lines]
 
-for id in document_ids:
-    request_url = url + id
+for url in urls:
     response = requests.get(url)
-    file = open("documents/" + id + ".html","w")
+    name = url.split("?id=")[1]
+    file = open("documents/" + name + ".html","w")
     file .write(response.text)
     file.close()
-    print(request_url)
+    print(url)
